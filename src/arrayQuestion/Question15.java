@@ -5,34 +5,40 @@ package arrayQuestion;
          arr2[]={{7,8,9},{10,11},{12}}
         */
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Question15 {
     public static void main(String[] args) {
         int[][] arr1 = {{1,2},{3,4,5},{6}};
         int[][] arr2 = {{7,8,9},{10,11},{12}};
-        int outherLoopLengt = Math.max(arr2.length,arr1.length);
-        int[] output = new int[arr1.length];
 
-        for (int i = 0; i < outherLoopLengt; i++) {
+        List<Integer> sums = new ArrayList<>();
 
-            int[] inner1 =  (i < arr1[i].length) ? arr1[i] : new int[0];
-            int[] inner2 =  (i < arr2[i].length) ? arr2[i] : new int[0];
+        int maxArrayLanght = Math.min(arr1.length,arr2.length);
 
-            int innerLoopLengt = Math.max(arr2[i].length,arr1[i].length);
+        for (int i = 0; i < maxArrayLanght; i++) {
 
-            System.out.print("arr[" + i + "] toplamları: [");
-            for (int j = 0; j < innerLoopLengt; j++) {
-                int val1 = (j < inner1.length ) ? inner1[j] : 0;
-                int val2 = (j < inner2.length ) ? inner2[j] : 0;
+            int[] innerArr1 = arr1[i];
+            int[] innerArr2 = arr2[i];
 
-                System.out.print((val1+val2) + ", ");
+
+            int minArrayLanght = Math.min(innerArr1.length,innerArr2.length);
+
+            for (int j = 0; j < minArrayLanght ; j++) {
+
+                int sum = innerArr1[j] + innerArr2[j];
+
+                sums.add(sum);
 
             }
-            System.out.println("]");
 
         }
-       // System.out.println(Arrays.toString(output));
+
+        System.out.println(sums);
+
+
 
     }
 }
